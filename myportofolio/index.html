@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moaz Elshamy | Junior Microsoft Data Engineer & Software Developer</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#101A24',
+                        darkCard: '#172635',
+                        darkBorder: '#304657',
+                        lightBg: '#F7F2E8',
+                        lightCard: '#FFFDF8',
+                        lightBorder: '#D8C9AE',
+                        accentCyan: '#0F766E',
+                        accentDarkCyan: '#F4B942',
+                    },
+                    fontFamily: {
+                        sans: ['DM Sans', 'Segoe UI', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- AOS CSS CDN (Scroll Animations) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-image: radial-gradient(circle at 8% 12%, rgba(244, 185, 66, 0.12), transparent 28rem), linear-gradient(135deg, rgba(15, 118, 110, 0.04), transparent 48%);
+        }
+
+        html.dark body {
+            background-image: radial-gradient(circle at 90% 8%, rgba(244, 185, 66, 0.1), transparent 25rem), linear-gradient(135deg, rgba(15, 118, 110, 0.12), transparent 50%);
+        }
+
+        @keyframes review-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(24px) scale(0.97);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .review-card {
+            animation: review-reveal 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        .review-card:nth-child(2) {
+            animation-delay: 90ms;
+        }
+
+        .review-card:nth-child(3) {
+            animation-delay: 180ms;
+        }
+
+        .review-card:nth-child(4) {
+            animation-delay: 270ms;
+        }
+
+        .review-card:nth-child(5) {
+            animation-delay: 360ms;
+        }
+
+        .review-card:nth-child(6) {
+            animation-delay: 450ms;
+        }
+
+        .review-card:nth-child(7) {
+            animation-delay: 540ms;
+        }
+
+        .review-card:nth-child(8) {
+            animation-delay: 630ms;
+        }
+
+        .review-card:nth-child(9) {
+            animation-delay: 720ms;
+        }
+
+        .review-card:hover img {
+            transform: scale(1.025);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .review-card {
+                animation: none;
+            }
+        }
+
+        :root {
+            --ink: #173042;
+            --muted-ink: #526776;
+            --teal: #0f766e;
+            --gold: #f4b942;
+            --paper: #f7f2e8;
+            --paper-bright: #fffdf8;
+            --line: #d8c9ae;
+        }
+
+        html {
+            scroll-padding-top: 5rem;
+            overflow-x: clip;
+        }
+
+        body {
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.65;
+            overflow-x: clip;
+        }
+
+        .text-slate-600,
+        .text-slate-500 {
+            color: #405766 !important;
+        }
+
+        html.dark .text-slate-600,
+        html.dark .text-slate-500,
+        html.dark .text-slate-400 {
+            color: #c4d0d6 !important;
+        }
+
+        .about-copy {
+            color: #203b4b !important;
+        }
+
+        html.dark .about-copy {
+            color: #a4b7c0 !important;
+        }
+
+        .credential-description {
+            color: #4a6170 !important;
+        }
+
+        html.dark .credential-description {
+            color: #99adb6 !important;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #71838d;
+            opacity: 1;
+        }
+
+        html.dark input::placeholder,
+        html.dark textarea::placeholder {
+            color: #9fb0ba;
+        }
+
+        h1, h2, h3, h4, nav, button, .font-mono {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        h1, h2, h3, h4 {
+            letter-spacing: -0.02em;
+        }
+
+        nav {
+            position: sticky !important;
+            top: 0 !important;
+            box-shadow: 0 8px 30px rgba(23, 48, 66, 0.07);
+        }
+
+        nav a {
+            position: relative;
+        }
+
+        nav .hidden.md\:block a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -0.55rem;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 220ms ease;
+        }
+
+        nav .hidden.md\:block a:hover::after,
+        nav .hidden.md\:block a.active::after {
+            transform: scaleX(1);
+        }
+
+        section {
+            position: relative;
+            isolation: isolate;
+        }
+
+        section > div {
+            position: relative;
+            z-index: 1;
+        }
+
+        #about {
+            background: linear-gradient(135deg, rgba(255, 253, 248, 0.98), rgba(247, 242, 232, 0.88));
+        }
+
+        html.dark #about {
+            background: linear-gradient(135deg, rgba(16, 26, 36, 0.98), rgba(23, 38, 53, 0.94));
+        }
+
+        #about::before,
+        #about::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            border: 1px solid rgba(15, 118, 110, 0.13);
+            border-radius: 999px;
+            pointer-events: none;
+        }
+
+        #about::before {
+            width: 24rem;
+            height: 24rem;
+            top: 8%;
+            right: -10rem;
+        }
+
+        #about::after {
+            width: 14rem;
+            height: 14rem;
+            bottom: 8%;
+            left: -7rem;
+            border-color: rgba(244, 185, 66, 0.22);
+        }
+
+        #services {
+            background-color: rgba(255, 253, 248, 0.72);
+        }
+
+        html.dark #services {
+            background-color: rgba(16, 26, 36, 0.82);
+        }
+
+        #additional-services {
+            background: linear-gradient(180deg, rgba(15, 118, 110, 0.08), rgba(244, 185, 66, 0.1));
+        }
+
+        html.dark #additional-services {
+            background: linear-gradient(180deg, rgba(15, 118, 110, 0.18), rgba(244, 185, 66, 0.1));
+        }
+
+        #projects {
+            background: rgba(247, 242, 232, 0.72);
+        }
+
+        html.dark #projects {
+            background: rgba(16, 26, 36, 0.78);
+        }
+
+        #skills {
+            background: linear-gradient(135deg, rgba(255, 253, 248, 0.86), rgba(15, 118, 110, 0.06));
+        }
+
+        html.dark #skills {
+            background: linear-gradient(135deg, rgba(16, 26, 36, 0.9), rgba(15, 118, 110, 0.14));
+        }
+
+        #experience {
+            background: rgba(247, 242, 232, 0.72);
+        }
+
+        html.dark #experience {
+            background: rgba(16, 26, 36, 0.78);
+        }
+
+        #reviews {
+            background: linear-gradient(180deg, rgba(244, 185, 66, 0.1), rgba(15, 118, 110, 0.06));
+        }
+
+        html.dark #reviews {
+            background: linear-gradient(180deg, rgba(244, 185, 66, 0.12), rgba(15, 118, 110, 0.16));
+        }
+
+        #contact {
+            background: linear-gradient(135deg, rgba(15, 118, 110, 0.1), rgba(255, 253, 248, 0.8));
+        }
+
+        html.dark #contact {
+            background: linear-gradient(135deg, rgba(15, 118, 110, 0.18), rgba(16, 26, 36, 0.92));
+        }
+
+        #services .grid > div,
+        #additional-services .grid > div,
+        #skills .grid > div,
+        #contact .grid > div {
+            box-shadow: 0 12px 28px rgba(23, 48, 66, 0.06);
+            transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+        }
+
+        #services .grid > div:hover,
+        #additional-services .grid > div:hover,
+        #skills .grid > div:hover,
+        #contact .grid > div:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 38px rgba(23, 48, 66, 0.12);
+        }
+
+        #projects .project-card {
+            box-shadow: 0 14px 32px rgba(23, 48, 66, 0.08);
+            transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+        }
+
+        #projects .project-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 22px 42px rgba(23, 48, 66, 0.14);
+        }
+
+        #projects .project-card > a:first-child img {
+            transition: transform 500ms ease, filter 500ms ease;
+        }
+
+        #projects .project-card:hover > a:first-child img {
+            transform: scale(1.035);
+            filter: saturate(1.12);
+        }
+
+        #reviews .review-card {
+            box-shadow: 0 12px 28px rgba(23, 48, 66, 0.08);
+        }
+
+        @media (max-width: 767px) {
+            nav .hidden.md\:block a::after {
+                display: none;
+            }
+
+            #about::before {
+                width: 16rem;
+                height: 16rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101A24;
+        }
+        html:not(.dark) ::-webkit-scrollbar-track {
+            background: #F7F2E8;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #304657;
+            border-radius: 4px;
+        }
+        html:not(.dark) ::-webkit-scrollbar-thumb {
+            background: #D8C9AE;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #F4B942;
+        }
+    </style>
+</head>
+<body class="bg-lightBg dark:bg-darkBg text-slate-800 dark:text-slate-200 font-sans antialiased selection:bg-accentDarkCyan selection:text-darkBg transition-colors duration-300">
+
+    <!-- ==================== Header & Navigation Bar ==================== -->
+    <nav class="sticky top-0 z-40 w-full bg-lightBg/80 dark:bg-darkBg/80 backdrop-blur-md border-b border-lightBorder dark:border-darkBorder transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand / Logo -->
+                <a href="index.html" class="flex-shrink-0 font-bold text-xl tracking-wider text-slate-900 dark:text-white flex items-center gap-2">
+                    <span class="text-accentCyan dark:text-accentDarkCyan font-mono">&lt;</span>Moaz.Dev<span class="text-accentCyan dark:text-accentDarkCyan font-mono">/&gt;</span>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:block">
+                    <div class="flex items-center space-x-6 text-sm font-medium">
+                        <a href="#about" class="hover:text-accentCyan dark:hover:text-accentDarkCyan transition-colors">About</a>
+                        <a href="#services" class="hover:text-accentCyan dark:hover:text-accentDarkCyan transition-colors">Services</a>
+                        <a href="#additional-services" class="hover:text-accentCyan dark:hover:text-accentDarkCyan transition-colors">Additional Services</a>
+                        <a href="#projects" class="hover:text-accentCyan dark:hover:text-accentDarkCyan transition-colors">Projects</a>
+                        <a href="#skills" class="hover:text-accentCyan dark:hover:text-accentDarkCyan transition-colors">Skills</a>
+                        <a href="#experience" class="hover:text-accentCyan dark:hover:text-accentDarkCyan transition-colors">Experience</a>
+                        <a href="#reviews" class="hover:text-accentCyan dark:hover:text-accentDarkCyan transition-colors">Reviews</a>
+                        <a href="#contact" class="hover:text-accentCyan dark:hover:text-accentDarkCyan transition-colors">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Controls: Dark/Light Mode Toggle + Resume Action -->
+                <div class="hidden md:flex items-center gap-4">
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" class="p-2 rounded-lg border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard text-slate-700 dark:text-slate-300 hover:border-accentCyan transition-all">
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                        <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                    </button>
+                    
+                    <!-- Direct CV Download Button -->
+                    <a href="https://drive.google.com/uc?export=download&id=137oNirZlhvyF2DKZ4Z90bBGdxqZVBwYy" target="_blank" rel="noopener noreferrer" class="bg-accentCyan dark:bg-accentDarkCyan text-white dark:text-darkBg font-semibold px-4 py-2 rounded-lg text-sm transition-all duration-300 flex items-center gap-2 hover:opacity-90 shadow-sm">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Download CV</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu & Theme Toggle -->
+                <div class="flex items-center gap-2 md:hidden">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-lg border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard text-slate-700 dark:text-slate-300">
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                        <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-slate-600 dark:text-slate-400 hover:bg-lightCard dark:hover:bg-darkCard focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-lightCard dark:bg-darkCard border-b border-lightBorder dark:border-darkBorder px-4 pt-2 pb-4 space-y-2">
+            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-lightBg dark:hover:bg-darkBorder">About</a>
+            <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-lightBg dark:hover:bg-darkBorder">Services</a>
+            <a href="#additional-services" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-lightBg dark:hover:bg-darkBorder">Additional Services</a>
+            <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-lightBg dark:hover:bg-darkBorder">Projects</a>
+            <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-lightBg dark:hover:bg-darkBorder">Skills</a>
+            <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-lightBg dark:hover:bg-darkBorder">Experience</a>
+            <a href="#reviews" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-lightBg dark:hover:bg-darkBorder">Reviews</a>
+            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-lightBg dark:hover:bg-darkBorder">Contact</a>
+            <a href="https://drive.google.com/uc?export=download&id=137oNirZlhvyF2DKZ4Z90bBGdxqZVBwYy" target="_blank" rel="noopener noreferrer" class="w-full mt-2 bg-accentCyan dark:bg-accentDarkCyan text-white dark:text-darkBg font-semibold px-4 py-2 rounded-lg text-sm flex items-center justify-center gap-2">
+                <i data-lucide="download" class="w-4 h-4"></i>
+                <span>Download CV</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ==================== Hero Section ==================== -->
+    <section id="about" class="min-h-[90vh] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 z-10" data-aos="fade-up">
+            
+            <!-- User Profile Photo Block -->
+            <div class="w-full md:w-1/2 flex justify-center">
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-accentCyan to-amber-500 rounded-2xl blur opacity-30 group-hover:opacity-70 transition duration-500"></div>
+                    <div class="relative w-64 h-80 sm:w-80 sm:h-96 rounded-2xl overflow-hidden border-2 border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard shadow-2xl">
+                        <!-- Profile Image Link Placeholder -->
+                        <img src="photo_2026-09-01_01-24-10.jpg" alt="Moaz Elshamy" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Text Content -->
+            <div class="w-full md:w-1/2 text-center md:text-left">
+                <!-- Target Role Badge -->
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard/60 text-accentCyan dark:text-accentDarkCyan text-xs sm:text-sm font-mono mb-6">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>Junior Microsoft Data Engineer | Computer Science Undergrad</span>
+                </div>
+
+                <!-- Main Intro Title -->
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4 leading-tight">
+                    Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-accentCyan to-amber-500 dark:from-accentDarkCyan dark:to-amber-300">Moaz Elshamy</span>
+                </h1>
+
+                <!-- Summary Paragraph derived from Resume -->
+                <p class="about-copy text-slate-600 dark:text-slate-400 text-base sm:text-lg mb-8 leading-relaxed">
+                   Analytical Computer Science undergraduate at Tanta University (Expected 2029) specializing in Microsoft Azure Data Engineering via Digital Egypt Pioneers Initiative (DEPI). Skilled in building scalable ETL/ELT pipelines, designing PostgreSQL architectures, and implementing IoT data ingestion workflows using Python and SQL.
+                </p>
+
+                <!-- Call To Action Buttons -->
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-8">
+                    <a href="#projects" class="bg-accentCyan dark:bg-accentDarkCyan hover:opacity-90 text-white dark:text-darkBg font-semibold px-6 py-3 rounded-lg shadow-md transition-all duration-300 flex items-center gap-2">
+                        <i data-lucide="folder-code" class="w-5 h-5"></i>
+                        <span>View Projects</span>
+                    </a>
+                    <a href="#services" class="bg-lightCard dark:bg-darkCard hover:bg-lightBorder dark:hover:bg-darkBorder text-slate-900 dark:text-white border border-lightBorder dark:border-darkBorder px-6 py-3 rounded-lg transition-all duration-300 flex items-center gap-2">
+                        <i data-lucide="briefcase" class="w-5 h-5"></i>
+                        <span>Request Service</span>
+                    </a>
+                    <!-- CV Download Button -->
+                    <a href="https://drive.google.com/uc?export=download&id=137oNirZlhvyF2DKZ4Z90bBGdxqZVBwYy" target="_blank" rel="noopener noreferrer" class="bg-transparent hover:bg-lightCard dark:hover:bg-darkCard text-slate-700 dark:text-slate-300 border border-lightBorder dark:border-darkBorder px-6 py-3 rounded-lg transition-all duration-300 flex items-center gap-2">
+                        <i data-lucide="download" class="w-5 h-5"></i>
+                        <span>CV</span>
+                    </a>
+                </div>
+
+                <!-- Social Badges & Direct Links -->
+                <div class="flex items-center justify-center md:justify-start gap-5 text-slate-500 dark:text-slate-400">
+                    <a href="https://github.com/moazelshamy-arch" target="_blank" rel="noopener noreferrer" class="hover:text-accentCyan dark:hover:text-accentDarkCyan transition-colors flex items-center gap-1.5 text-sm font-medium">
+                        <img src="https://cdn.simpleicons.org/github/64748B" alt="" aria-hidden="true" class="w-5 h-5">
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/moaz-elshamy-268552403/" target="_blank" rel="noopener noreferrer" class="hover:text-accentCyan dark:hover:text-accentDarkCyan transition-colors flex items-center gap-1.5 text-sm font-medium">
+                        <img src="https://cdn.simpleicons.org/linkedin/64748B" alt="" aria-hidden="true" class="w-5 h-5">
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://www.kaggle.com/moazelshamy2007" target="_blank" rel="noopener noreferrer" class="hover:text-accentCyan dark:hover:text-accentDarkCyan transition-colors flex items-center gap-1.5 text-sm font-medium">
+                        <img src="https://cdn.simpleicons.org/kaggle/64748B" alt="" aria-hidden="true" class="w-5 h-5">
+                        <span>Kaggle</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== Services Section ==================== -->
+    <section id="services" class="py-20 px-4 sm:px-6 lg:px-8 bg-lightCard/50 dark:bg-darkCard/30 border-y border-lightBorder dark:border-darkBorder">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">Services & Solutions</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Junior-level technical services tailored for automation, data processing, and basic engineering tasks.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service 1 -->
+                <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder p-6 rounded-xl hover:border-accentCyan/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 bg-accentCyan/10 rounded-lg flex items-center justify-center text-accentCyan dark:text-accentDarkCyan mb-6 group-hover:bg-accentCyan group-hover:text-white dark:group-hover:text-darkBg transition-colors">
+                        <i data-lucide="database" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Data Cleaning & Preprocessing</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">
+                        Cleaning raw multi-source datasets, handling missing values, structural formatting, and statistical preparation using Pandas & NumPy.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6 text-xs font-mono text-slate-600 dark:text-slate-300">
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">Python</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">Pandas</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">NumPy</span>
+                    </div>
+                    <a href="#contact" class="text-accentCyan dark:text-accentDarkCyan text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder p-6 rounded-xl hover:border-accentCyan/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 bg-accentCyan/10 rounded-lg flex items-center justify-center text-accentCyan dark:text-accentDarkCyan mb-6 group-hover:bg-accentCyan group-hover:text-white dark:group-hover:text-darkBg transition-colors">
+                        <i data-lucide="code" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Python Scripting & Automation</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">
+                        Writing custom Python scripts for automating routine tasks, file transformations, scheduled data batch pipelines, and reporting.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6 text-xs font-mono text-slate-600 dark:text-slate-300">
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">Automation</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">Python</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">ETL</span>
+                    </div>
+                    <a href="#contact" class="text-accentCyan dark:text-accentDarkCyan text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder p-6 rounded-xl hover:border-accentCyan/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-12 h-12 bg-accentCyan/10 rounded-lg flex items-center justify-center text-accentCyan dark:text-accentDarkCyan mb-6 group-hover:bg-accentCyan group-hover:text-white dark:group-hover:text-darkBg transition-colors">
+                        <i data-lucide="table" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Basic Web Scraping</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">
+                        Extracting public structured web data into usable formats (CSV, JSON) and staging it into databases for analysis.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6 text-xs font-mono text-slate-600 dark:text-slate-300">
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">BeautifulSoup</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">Python</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">JSON/CSV</span>
+                    </div>
+                    <a href="#contact" class="text-accentCyan dark:text-accentDarkCyan text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder p-6 rounded-xl hover:border-accentCyan/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-12 h-12 bg-accentCyan/10 rounded-lg flex items-center justify-center text-accentCyan dark:text-accentDarkCyan mb-6 group-hover:bg-accentCyan group-hover:text-white dark:group-hover:text-darkBg transition-colors">
+                        <i data-lucide="server" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">SQL Database Querying & Schema Design</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">
+                        Constructing normalized relational schemas (PostgreSQL), executing complex SQL joins/aggregations, and optimizing query indexing.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6 text-xs font-mono text-slate-600 dark:text-slate-300">
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">PostgreSQL</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">SQL</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">Database Schema</span>
+                    </div>
+                    <a href="#contact" class="text-accentCyan dark:text-accentDarkCyan text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder p-6 rounded-xl hover:border-accentCyan/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-12 h-12 bg-accentCyan/10 rounded-lg flex items-center justify-center text-accentCyan dark:text-accentDarkCyan mb-6 group-hover:bg-accentCyan group-hover:text-white dark:group-hover:text-darkBg transition-colors">
+                        <i data-lucide="bug" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">C++ Bug Fixing & Code Review</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">
+                        Debugging fundamental C++ applications, optimizing data structures, OOP implementations, and hardware-software code logic.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6 text-xs font-mono text-slate-600 dark:text-slate-300">
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">C++</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">OOP</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">Debugging</span>
+                    </div>
+                    <a href="#contact" class="text-accentCyan dark:text-accentDarkCyan text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder p-6 rounded-xl hover:border-accentCyan/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="600">
+                    <div class="w-12 h-12 bg-accentCyan/10 rounded-lg flex items-center justify-center text-accentCyan dark:text-accentDarkCyan mb-6 group-hover:bg-accentCyan group-hover:text-white dark:group-hover:text-darkBg transition-colors">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">AI Prompt Engineering</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">
+                        Crafting optimized prompts for LLM automation and workflow integration based on Dubai Future Foundation guidelines.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6 text-xs font-mono text-slate-600 dark:text-slate-300">
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">Prompt Eng.</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">AI Workflows</span>
+                    </div>
+                    <a href="#contact" class="text-accentCyan dark:text-accentDarkCyan text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Additional Services Section ==================== -->
+    <section id="additional-services" class="py-20 px-4 sm:px-6 lg:px-8 bg-lightCard/50 dark:bg-darkCard/30 border-b border-lightBorder dark:border-darkBorder">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">Additional Services</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Professional digital services designed to strengthen your online presence and present your work with clarity and impact.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Additional Service 1 -->
+                <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder p-6 rounded-xl hover:border-accentCyan/50 transition-all duration-300 group" data-aos="fade-up">
+                    <div class="w-12 h-12 bg-accentCyan/10 rounded-lg flex items-center justify-center text-accentCyan dark:text-accentDarkCyan mb-6 group-hover:bg-accentCyan group-hover:text-white dark:group-hover:text-darkBg transition-colors">
+                        <i data-lucide="layout-template" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Portfolio Website Design & Development</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">
+                        Building polished, responsive portfolio websites that turn your skills and achievements into a strong professional presence. Each website is tailored to your personal brand, showcases projects and certificates clearly, connects your professional platforms, and delivers a fast, modern experience across every screen.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6 text-xs font-mono text-slate-600 dark:text-slate-300">
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">Responsive Design</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">HTML & Tailwind CSS</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">Professional Branding</span>
+                    </div>
+                    <a href="#contact" class="text-accentCyan dark:text-accentDarkCyan text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+
+                <!-- Additional Service 2 -->
+                <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder p-6 rounded-xl hover:border-accentCyan/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 bg-accentCyan/10 rounded-lg flex items-center justify-center text-accentCyan dark:text-accentDarkCyan mb-6 group-hover:bg-accentCyan group-hover:text-white dark:group-hover:text-darkBg transition-colors">
+                        <i data-lucide="pen-tool" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Content Writing & Professional Copy</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">
+                        Creating clear, persuasive content that gives your brand a confident voice and turns your experience into a compelling story. I write polished website copy, personal introductions, service descriptions, project summaries, and professional bios tailored to your audience and career goals.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6 text-xs font-mono text-slate-600 dark:text-slate-300">
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">Website Copy</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">Personal Branding</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder px-2.5 py-1 rounded">Professional Bios</span>
+                    </div>
+                    <a href="#contact" class="text-accentCyan dark:text-accentDarkCyan text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Projects Section ==================== -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">Featured Projects</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Selected practical projects in data pipelines, analytics dashboards, and IoT architecture.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex justify-center gap-2 sm:gap-4 mb-10 flex-wrap" data-aos="fade-up">
+                <button class="filter-btn active bg-accentCyan dark:bg-accentDarkCyan text-white dark:text-darkBg px-4 py-1.5 rounded-lg text-sm font-medium transition-all" data-filter="all">All Projects</button>
+                <button class="filter-btn bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-300 hover:border-accentCyan px-4 py-1.5 rounded-lg text-sm font-medium transition-all" data-filter="data">Data Analytics</button>
+                <button class="filter-btn bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-300 hover:border-accentCyan px-4 py-1.5 rounded-lg text-sm font-medium transition-all" data-filter="iot">IoT Pipelines</button>
+                <button class="filter-btn bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-300 hover:border-accentCyan px-4 py-1.5 rounded-lg text-sm font-medium transition-all" data-filter="sql">SQL & Databases</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Project 1 -->
+                <div class="project-card bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder rounded-xl overflow-hidden hover:border-slate-400 dark:hover:border-slate-500 transition-all duration-300 flex flex-col shadow-sm" data-category="data" data-aos="fade-up">
+                    <a href="1776257144724.jpg" target="_blank" rel="noopener noreferrer" class="block bg-slate-100 dark:bg-slate-900/60 p-3">
+                        <img src="1776257144724.jpg" alt="Liverpool FC performance analytics project" class="w-full h-52 object-cover rounded-lg border border-lightBorder dark:border-darkBorder hover:opacity-90 transition-opacity">
+                    </a>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono bg-accentCyan/10 text-accentCyan dark:text-accentDarkCyan px-2.5 py-1 rounded">2024</span>
+                            <div class="flex gap-2 text-slate-400">
+                                <a href="https://www.linkedin.com/posts/moaz-elshamy-268552403_%D9%85%D9%87%D9%85%D8%A7-%D9%85%D8%B1-%D9%85%D9%86-%D9%88%D9%82%D8%AA-%D9%87%D9%81%D8%B6%D9%84-%D9%81%D8%A7%D9%83%D8%B1-%D8%AF%D8%A7%D9%8A%D9%85%D8%A7-%D8%B1%D8%A7%D9%88%D9%86%D8%AF-%D8%A7%D9%83%D8%B3%D9%8A%D9%84-activity-7450162464199143424-st6_?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAGchT_ABgDw3_-R-eajRGmhAaAXHhC-WFHM" target="_blank" rel="noopener noreferrer" aria-label="View Liverpool project on LinkedIn" title="View Liverpool project on LinkedIn" class="text-xs font-medium text-accentCyan dark:text-accentDarkCyan hover:underline whitespace-nowrap">View on LinkedIn</a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Liverpool FC 10-Season Performance Analytics</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                            Led a team of 4 in an AUC-accredited initiative analyzing 10 seasons of sports performance using advanced statistical models.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-4 border-t border-lightBorder/60 dark:border-darkBorder/50 text-xs font-mono text-slate-500 dark:text-slate-300">
+                            <span>Excel</span> • <span>SQL</span> • <span>Statistical Models</span>
+                        </div>
+                    </div>
+                    <button onclick="openModal('modal-1')" class="w-full bg-lightBg dark:bg-darkBorder/40 hover:bg-lightBorder dark:hover:bg-darkBorder py-2.5 text-center text-accentCyan dark:text-accentDarkCyan text-sm font-medium transition-colors border-t border-lightBorder dark:border-darkBorder">
+                        View Architecture Details
+                    </button>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder rounded-xl overflow-hidden hover:border-slate-400 dark:hover:border-slate-500 transition-all duration-300 flex flex-col shadow-sm" data-category="iot" data-aos="fade-up" data-aos-delay="100">
+                    <a href="1776214119095.jpg" target="_blank" rel="noopener noreferrer" class="block bg-slate-100 dark:bg-slate-900/60 p-3">
+                        <img src="1776214119095.jpg" alt="Smart Occupancy Monitoring and IoT Pipeline project" class="w-full h-52 object-cover rounded-lg border border-lightBorder dark:border-darkBorder hover:opacity-90 transition-opacity">
+                    </a>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono bg-accentCyan/10 text-accentCyan dark:text-accentDarkCyan px-2.5 py-1 rounded">2023 – 2024</span>
+                            <div class="flex gap-2 text-slate-400">
+                                <a href="https://www.linkedin.com/posts/moaz-elshamy-268552403_aetaecaeraepaer-aevaepaebaeqaepaesabraewaetaehaesaewaetaepaesabraefaeuaefaep-activity-7450196355567984641-9-1u?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAGchT_ABgDw3_-R-eajRGmhAaAXHhC-WFHM" target="_blank" rel="noopener noreferrer" aria-label="View IoT project on LinkedIn" title="View IoT project on LinkedIn" class="text-xs font-medium text-accentCyan dark:text-accentDarkCyan hover:underline whitespace-nowrap">View on LinkedIn</a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Smart Occupancy Monitoring & IoT Pipeline</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                            Designed hardware-software pipeline for ESP32/microcontroller sensors, ingesting real-time occupancy data into central database.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-4 border-t border-lightBorder/60 dark:border-darkBorder/50 text-xs font-mono text-slate-500 dark:text-slate-300">
+                            <span>ESP32</span> • <span>C++</span> • <span>Real-Time Ingestion</span>
+                        </div>
+                    </div>
+                    <button onclick="openModal('modal-2')" class="w-full bg-lightBg dark:bg-darkBorder/40 hover:bg-lightBorder dark:hover:bg-darkBorder py-2.5 text-center text-accentCyan dark:text-accentDarkCyan text-sm font-medium transition-colors border-t border-lightBorder dark:border-darkBorder">
+                        View Architecture Details
+                    </button>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder rounded-xl overflow-hidden hover:border-slate-400 dark:hover:border-slate-500 transition-all duration-300 flex flex-col shadow-sm" data-category="sql" data-aos="fade-up" data-aos-delay="200">
+                    <a href="Gemini_Generated_Image_gl67dogl67dogl67%20(1).jpg" target="_blank" rel="noopener noreferrer" class="block bg-slate-100 dark:bg-slate-900/60 p-3">
+                        <img src="Gemini_Generated_Image_gl67dogl67dogl67%20(1).jpg" alt="Relational Database Extraction Pipeline project" class="w-full h-52 object-cover rounded-lg border border-lightBorder dark:border-darkBorder hover:opacity-90 transition-opacity">
+                    </a>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono bg-accentCyan/10 text-accentCyan dark:text-accentDarkCyan px-2.5 py-1 rounded">2024</span>
+                            <div class="flex gap-2 text-slate-400">
+                                <a href="https://github.com/moazelshamy-arch" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 dark:hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Relational Database Extraction Pipeline</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                            Formulated normalized schemas in PostgreSQL and integrated Python automated extraction scripts to clean & stage operational data.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-4 border-t border-lightBorder/60 dark:border-darkBorder/50 text-xs font-mono text-slate-500 dark:text-slate-300">
+                            <span>PostgreSQL</span> • <span>Python</span> • <span>ETL Pipelines</span>
+                        </div>
+                    </div>
+                    <button onclick="openModal('modal-3')" class="w-full bg-lightBg dark:bg-darkBorder/40 hover:bg-lightBorder dark:hover:bg-darkBorder py-2.5 text-center text-accentCyan dark:text-accentDarkCyan text-sm font-medium transition-colors border-t border-lightBorder dark:border-darkBorder">
+                        View Architecture Details
+                    </button>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder rounded-xl overflow-hidden hover:border-slate-400 dark:hover:border-slate-500 transition-all duration-300 flex flex-col shadow-sm" data-category="data" data-aos="fade-up" data-aos-delay="300">
+                    <a href="Gemini_Generated_Image_hknmx8hknmx8hknm.jpg" target="_blank" rel="noopener noreferrer" class="block bg-slate-100 dark:bg-slate-900/60 p-3">
+                        <img src="Gemini_Generated_Image_hknmx8hknmx8hknm.jpg" alt="Python Bank Account Management System project" class="w-full h-52 object-cover rounded-lg border border-lightBorder dark:border-darkBorder hover:opacity-90 transition-opacity">
+                    </a>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono bg-accentCyan/10 text-accentCyan dark:text-accentDarkCyan px-2.5 py-1 rounded">Python Project</span>
+                            <div class="flex gap-2 text-slate-400">
+                                <a href="https://colab.research.google.com/drive/1ilunqYiMTENpbaUKSHAvbqI9dRiJqSHy?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Open Bank Account project in Google Colab" title="Open in Google Colab" class="text-xs font-medium text-accentCyan dark:text-accentDarkCyan hover:underline whitespace-nowrap">Open in Colab</a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Bank Account Management System</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                            A practical Python project that applies object-oriented programming to model a bank account. Users can create an account, deposit funds, withdraw money, and view an updated balance through clear, reusable class-based logic.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-4 border-t border-lightBorder/60 dark:border-darkBorder/50 text-xs font-mono text-slate-500 dark:text-slate-300">
+                            <span>Python</span> • <span>OOP</span> • <span>Classes & Methods</span>
+                        </div>
+                    </div>
+                    <a href="https://colab.research.google.com/drive/1ilunqYiMTENpbaUKSHAvbqI9dRiJqSHy?usp=sharing" target="_blank" rel="noopener noreferrer" class="w-full bg-lightBg dark:bg-darkBorder/40 hover:bg-lightBorder dark:hover:bg-darkBorder py-2.5 text-center text-accentCyan dark:text-accentDarkCyan text-sm font-medium transition-colors border-t border-lightBorder dark:border-darkBorder">
+                        Open Project in Google Colab
+                    </a>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder rounded-xl overflow-hidden hover:border-slate-400 dark:hover:border-slate-500 transition-all duration-300 flex flex-col shadow-sm" data-category="data" data-aos="fade-up" data-aos-delay="400">
+                    <a href="Gemini_Generated_Image_8tsp208tsp208tsp.jpg" target="_blank" rel="noopener noreferrer" class="block bg-slate-100 dark:bg-slate-900/60 p-3">
+                        <img src="Gemini_Generated_Image_8tsp208tsp208tsp.jpg" alt="IMDb Top 250 movies data cleaning project" class="w-full h-52 object-cover rounded-lg border border-lightBorder dark:border-darkBorder hover:opacity-90 transition-opacity">
+                    </a>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono bg-accentCyan/10 text-accentCyan dark:text-accentDarkCyan px-2.5 py-1 rounded">Data Cleaning</span>
+                            <div class="flex items-center gap-3">
+                                <a href="https://www.kaggle.com/code/moazelshamy2007/data-cleaning" target="_blank" rel="noopener noreferrer" aria-label="Open data cleaning notebook on Kaggle" title="Open on Kaggle" class="text-xs font-medium text-accentCyan dark:text-accentDarkCyan hover:underline whitespace-nowrap">View on Kaggle</a>
+                                <a href="https://www.linkedin.com/posts/moaz-elshamy-268552403_dataengineering-kaggle-python-activity-7495851692605816833-Li5g?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAGchT_ABgDw3_-R-eajRGmhAaAXHhC-WFHM" target="_blank" rel="noopener noreferrer" aria-label="View data cleaning project on LinkedIn" title="View on LinkedIn" class="text-xs font-medium text-accentCyan dark:text-accentDarkCyan hover:underline whitespace-nowrap">View on LinkedIn</a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">IMDb Top 250 Movies Data Cleaning</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                            A practical data-cleaning notebook that prepares IMDb's Top 250 movies dataset for reliable analysis. Using Pandas and NumPy, the workflow organizes the raw data, handles quality issues, standardizes values, and creates a cleaner foundation for meaningful insights.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-4 border-t border-lightBorder/60 dark:border-darkBorder/50 text-xs font-mono text-slate-500 dark:text-slate-300">
+                            <span>Python</span> • <span>Pandas</span> • <span>NumPy</span>
+                        </div>
+                    </div>
+                    <a href="https://www.kaggle.com/code/moazelshamy2007/data-cleaning" target="_blank" rel="noopener noreferrer" class="w-full bg-lightBg dark:bg-darkBorder/40 hover:bg-lightBorder dark:hover:bg-darkBorder py-2.5 text-center text-accentCyan dark:text-accentDarkCyan text-sm font-medium transition-colors border-t border-lightBorder dark:border-darkBorder">
+                        Open Notebook on Kaggle
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Architecture Popups -->
+    <div id="modal-1" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder max-w-2xl w-full rounded-xl p-6 relative">
+            <button onclick="closeModal('modal-1')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Liverpool FC Performance Analytics Architecture</h3>
+            <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed">
+                Processed 10 seasons of match records. Cleaned multi-source datasets in Microsoft Excel and SQL, building interactive executive dashboards highlighting goals, possession, and win rates.
+            </p>
+            <div class="bg-lightBg dark:bg-darkBg p-4 rounded-lg font-mono text-xs text-slate-700 dark:text-slate-400 mb-4 border border-lightBorder dark:border-darkBorder">
+                Flow: Multi-source Raw Data -> Excel/SQL Cleaning -> Normalization -> Aggregation Queries -> Executive Dashboard
+            </div>
+            <button onclick="closeModal('modal-1')" class="bg-accentCyan dark:bg-accentDarkCyan text-white dark:text-darkBg px-4 py-2 rounded-lg text-sm font-semibold">Close Modal</button>
+        </div>
+    </div>
+
+    <div id="modal-2" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder max-w-2xl w-full rounded-xl p-6 relative">
+            <button onclick="closeModal('modal-2')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Smart Occupancy Monitoring Architecture</h3>
+            <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed">
+                Built low-latency firmware on ESP32 microcontrollers in C++ to capture environmental sensor inputs and push real-time occupancy events into a central database.
+            </p>
+            <div class="bg-lightBg dark:bg-darkBg p-4 rounded-lg font-mono text-xs text-slate-700 dark:text-slate-400 mb-4 border border-lightBorder dark:border-darkBorder">
+                Flow: ESP32 Microcontrollers -> C++ Sensor Firmware -> Real-Time Ingestion Protocol -> Central Database
+            </div>
+            <button onclick="closeModal('modal-2')" class="bg-accentCyan dark:bg-accentDarkCyan text-white dark:text-darkBg px-4 py-2 rounded-lg text-sm font-semibold">Close Modal</button>
+        </div>
+    </div>
+
+    <div id="modal-3" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder max-w-2xl w-full rounded-xl p-6 relative">
+            <button onclick="closeModal('modal-3')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Relational Extraction Pipeline Architecture</h3>
+            <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed">
+                Formulated PostgreSQL schemas with proper normalization and indexing. Developed Python scripts for scheduled extractions, cleaning, and staging into analytical tables.
+            </p>
+            <div class="bg-lightBg dark:bg-darkBg p-4 rounded-lg font-mono text-xs text-slate-700 dark:text-slate-400 mb-4 border border-lightBorder dark:border-darkBorder">
+                Flow: Operational Database -> PostgreSQL Normalized Schemas -> Python Extraction Scripts -> Staging Analytics
+            </div>
+            <button onclick="closeModal('modal-3')" class="bg-accentCyan dark:bg-accentDarkCyan text-white dark:text-darkBg px-4 py-2 rounded-lg text-sm font-semibold">Close Modal</button>
+        </div>
+    </div>
+
+    <!-- ==================== Skills & Tools Section ==================== -->
+    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 bg-lightCard/50 dark:bg-darkCard/30 border-y border-lightBorder dark:border-darkBorder">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">Skills & Tools</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">A focused overview of the skills demonstrated across my data, software, IoT, and professional portfolio projects.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Programming & OOP -->
+                <div class="bg-lightCard dark:bg-darkCard p-6 rounded-xl border border-lightBorder dark:border-darkBorder shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-accentCyan dark:text-accentDarkCyan font-bold text-lg mb-4 flex items-center gap-2">
+                        <i data-lucide="code-2" class="w-5 h-5"></i> Programming & OOP
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">Python</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">C++</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">SQL</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">OOP</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">Classes & Methods</span>
+                    </div>
+                </div>
+
+                <!-- Data Cleaning & Analytics -->
+                <div class="bg-lightCard dark:bg-darkCard p-6 rounded-xl border border-lightBorder dark:border-darkBorder shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-accentCyan dark:text-accentDarkCyan font-bold text-lg mb-4 flex items-center gap-2">
+                        <i data-lucide="bar-chart-3" class="w-5 h-5"></i> Data Cleaning & Analytics
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">Pandas</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">NumPy</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">Data Cleaning</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">Data Preparation</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">Microsoft Excel</span>
+                    </div>
+                </div>
+
+                <!-- Databases & ETL -->
+                <div class="bg-lightCard dark:bg-darkCard p-6 rounded-xl border border-lightBorder dark:border-darkBorder shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-accentCyan dark:text-accentDarkCyan font-bold text-lg mb-4 flex items-center gap-2">
+                        <i data-lucide="database" class="w-5 h-5"></i> Databases & ETL
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">PostgreSQL</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">Relational Schemas</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">ETL Pipelines</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">Data Modeling</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">MS Azure Data Eng.</span>
+                    </div>
+                </div>
+
+                <!-- IoT, AI & Tools -->
+                <div class="bg-lightCard dark:bg-darkCard p-6 rounded-xl border border-lightBorder dark:border-darkBorder shadow-sm" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="text-accentCyan dark:text-accentDarkCyan font-bold text-lg mb-4 flex items-center gap-2">
+                        <i data-lucide="wrench" class="w-5 h-5"></i> IoT, AI & Tools
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">IoT Pipeline Design</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">ESP32</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">Prompt Engineering</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">Git / GitHub</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">VS Code</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">Jupyter Notebooks</span>
+                        <span class="bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm">Kaggle & Colab</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Education & Timeline ==================== -->
+    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">Education & Certifications</h2>
+                <p class="text-slate-600 dark:text-slate-400">Academic background, specialized training tracks, and professional credentials.</p>
+            </div>
+
+            <div class="relative border-l-2 border-lightBorder dark:border-darkBorder ml-4 md:ml-0 pl-6 space-y-12">
+                
+                <!-- Timeline Item 1 -->
+                <div class="relative" data-aos="fade-up">
+                    <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-accentCyan dark:bg-accentDarkCyan border-4 border-lightBg dark:border-darkBg"></div>
+                    <span class="text-xs font-mono text-accentCyan dark:text-accentDarkCyan bg-accentCyan/10 px-2.5 py-1 rounded">Expected 2029</span>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-2">B.Sc. in Computers and Information</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">Tanta University, Egypt | Undergraduate Student (Second Academic Year)</p>
+                    <a href="كلية-الحاسبات-والمعلومات-جامعة-طنطا.jpg" target="_blank" rel="noopener noreferrer" class="block max-w-md mt-4 rounded-xl border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard p-2 shadow-sm hover:border-accentCyan transition-colors">
+                        <img src="كلية-الحاسبات-والمعلومات-جامعة-طنطا.jpg" alt="Faculty of Computers and Information at Tanta University" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition-opacity">
+                    </a>
+                    <p class="credential-description text-slate-500 dark:text-slate-400 text-xs mt-2 leading-relaxed">
+                        Strong academic foundation in Data Structures, Algorithms, OOP, and PostgreSQL relational database architecture.
+                    </p>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative" data-aos="fade-up">
+                    <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-accentCyan dark:bg-accentDarkCyan border-4 border-lightBg dark:border-darkBg"></div>
+                    <span class="text-xs font-mono text-accentCyan dark:text-accentDarkCyan bg-accentCyan/10 px-2.5 py-1 rounded">In Progress</span>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-2">Microsoft Data Engineer Track</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">Digital Egypt Pioneers Initiative (DEPI)</p>
+                    <a href="Gemini_Generated_Image_vinu9hvinu9hvinu.jpg" target="_blank" rel="noopener noreferrer" class="block max-w-md mt-4 rounded-xl border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard p-2 shadow-sm hover:border-accentCyan transition-colors">
+                        <img src="Gemini_Generated_Image_vinu9hvinu9hvinu.jpg" alt="Digital Egypt Pioneers Initiative DEPI" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition-opacity">
+                    </a>
+                    <a href="https://www.linkedin.com/posts/moaz-elshamy-268552403_depi-microsoft-dataengineer-activity-7483951596066861056-c7M0?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAGchT_ABgDw3_-R-eajRGmhAaAXHhC-WFHM" target="_blank" rel="noopener noreferrer" aria-label="View DEPI post on LinkedIn" title="View DEPI post on LinkedIn" class="inline-flex items-center gap-1.5 mt-4 px-3 py-2 rounded-lg border border-accentCyan/30 dark:border-accentDarkCyan/50 bg-accentCyan/10 dark:bg-accentDarkCyan/10 text-xs font-semibold text-accentCyan dark:text-accentDarkCyan hover:bg-accentCyan hover:text-white dark:hover:bg-accentDarkCyan dark:hover:text-darkBg transition-colors"><span>View on LinkedIn</span><i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
+                    <p class="credential-description text-slate-500 dark:text-slate-400 text-xs mt-2 leading-relaxed">
+                        Specialized training in Azure Data Services, enterprise ETL pipelines, and analytical data modeling.
+                    </p>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="relative" data-aos="fade-up">
+                    <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-500 border-4 border-lightBg dark:border-darkBg"></div>
+                    <span class="text-xs font-mono text-slate-500 dark:text-slate-400 bg-lightCard dark:bg-darkCard px-2.5 py-1 rounded">Apr 2026</span>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-2">One Million Prompters Initiative Certification</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">Certified by Dubai Future Foundation</p>
+                    <a href="1777299073935.jpg" target="_blank" rel="noopener noreferrer" class="block max-w-md mt-4 rounded-xl border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard p-2 shadow-sm hover:border-accentCyan transition-colors">
+                        <img src="1777299073935.jpg" alt="One Million Prompters Initiative certificate" class="w-full h-48 object-contain rounded-lg bg-slate-50 dark:bg-slate-900">
+                    </a>
+                    <a href="https://www.linkedin.com/posts/moaz-elshamy-268552403_ai-promptengineering-dubaifuturefoundation-activity-7454532621797253123-pLiM?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAGchT_ABgDw3_-R-eajRGmhAaAXHhC-WFHM" target="_blank" rel="noopener noreferrer" aria-label="View Prompt Engineering certificate post on LinkedIn" title="View Prompt Engineering certificate post on LinkedIn" class="inline-flex items-center gap-1.5 mt-4 px-3 py-2 rounded-lg border border-accentCyan/30 dark:border-accentDarkCyan/50 bg-accentCyan/10 dark:bg-accentDarkCyan/10 text-xs font-semibold text-accentCyan dark:text-accentDarkCyan hover:bg-accentCyan hover:text-white dark:hover:bg-accentDarkCyan dark:hover:text-darkBg transition-colors"><span>View on LinkedIn</span><i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
+                    <p class="credential-description text-slate-500 dark:text-slate-400 text-xs mt-2">AI prompt engineering expertise and automated workflow optimization.</p>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="relative" data-aos="fade-up">
+                    <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-500 border-4 border-lightBg dark:border-darkBg"></div>
+                    <span class="text-xs font-mono text-slate-500 dark:text-slate-400 bg-lightCard dark:bg-darkCard px-2.5 py-1 rounded">2026</span>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-2">Excel Data Analysis Certification</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">AUC-Accredited UCCD Program</p>
+                    <a href="1776180262679.jpg" target="_blank" rel="noopener noreferrer" class="block max-w-md mt-4 rounded-xl border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard p-2 shadow-sm hover:border-accentCyan transition-colors">
+                        <img src="1776180262679.jpg" alt="Excel Data Analysis UCCD certificate" class="w-full h-48 object-contain rounded-lg bg-slate-50 dark:bg-slate-900">
+                    </a>
+                    <a href="https://www.linkedin.com/posts/moaz-elshamy-268552403_im-happy-to-share-that-ive-successfully-activity-7449839986188689409-ikgP?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAGchT_ABgDw3_-R-eajRGmhAaAXHhC-WFHM" target="_blank" rel="noopener noreferrer" aria-label="View UCCD certificate post on LinkedIn" title="View UCCD certificate post on LinkedIn" class="inline-flex items-center gap-1.5 mt-4 px-3 py-2 rounded-lg border border-accentCyan/30 dark:border-accentDarkCyan/50 bg-accentCyan/10 dark:bg-accentDarkCyan/10 text-xs font-semibold text-accentCyan dark:text-accentDarkCyan hover:bg-accentCyan hover:text-white dark:hover:bg-accentDarkCyan dark:hover:text-darkBg transition-colors"><span>View on LinkedIn</span><i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
+                    <p class="credential-description text-slate-500 dark:text-slate-400 text-xs mt-2">Accredited by the American University in Cairo for data cleaning and analytical modeling.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Reviews Section ==================== -->
+    <section id="reviews" class="py-20 px-4 sm:px-6 lg:px-8 bg-lightCard/50 dark:bg-darkCard/30 border-y border-lightBorder dark:border-darkBorder">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">Reviews</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">A selection of feedback and recommendations that reflect the quality, care, and professionalism behind my work.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <a href="reviews/Screenshot 2026-09-03 004246.png" target="_blank" rel="noopener noreferrer" class="review-card group block rounded-xl border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard p-2 shadow-sm hover:border-accentCyan transition-colors" aria-label="Open review 1">
+                    <img src="reviews/Screenshot 2026-09-03 004246.png" alt="Professional review 1" class="w-full aspect-[4/3] object-contain rounded-lg bg-slate-50 dark:bg-slate-900 transition-transform duration-500">
+                </a>
+                <a href="reviews/Screenshot 2026-09-03 004322.png" target="_blank" rel="noopener noreferrer" class="review-card group block rounded-xl border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard p-2 shadow-sm hover:border-accentCyan transition-colors" aria-label="Open review 2">
+                    <img src="reviews/Screenshot 2026-09-03 004322.png" alt="Professional review 2" class="w-full aspect-[4/3] object-contain rounded-lg bg-slate-50 dark:bg-slate-900 transition-transform duration-500">
+                </a>
+                <a href="reviews/Screenshot 2026-09-03 004438.png" target="_blank" rel="noopener noreferrer" class="review-card group block rounded-xl border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard p-2 shadow-sm hover:border-accentCyan transition-colors" aria-label="Open review 3">
+                    <img src="reviews/Screenshot 2026-09-03 004438.png" alt="Professional review 3" class="w-full aspect-[4/3] object-contain rounded-lg bg-slate-50 dark:bg-slate-900 transition-transform duration-500">
+                </a>
+                <a href="reviews/Screenshot 2026-09-03 004458.png" target="_blank" rel="noopener noreferrer" class="review-card group block rounded-xl border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard p-2 shadow-sm hover:border-accentCyan transition-colors" aria-label="Open review 4">
+                    <img src="reviews/Screenshot 2026-09-03 004458.png" alt="Professional review 4" class="w-full aspect-[4/3] object-contain rounded-lg bg-slate-50 dark:bg-slate-900 transition-transform duration-500">
+                </a>
+                <a href="reviews/Screenshot 2026-09-03 004525.png" target="_blank" rel="noopener noreferrer" class="review-card group block rounded-xl border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard p-2 shadow-sm hover:border-accentCyan transition-colors" aria-label="Open review 5">
+                    <img src="reviews/Screenshot 2026-09-03 004525.png" alt="Professional review 5" class="w-full aspect-[4/3] object-contain rounded-lg bg-slate-50 dark:bg-slate-900 transition-transform duration-500">
+                </a>
+                <a href="reviews/Screenshot 2026-09-03 004540.png" target="_blank" rel="noopener noreferrer" class="review-card group block rounded-xl border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard p-2 shadow-sm hover:border-accentCyan transition-colors" aria-label="Open review 6">
+                    <img src="reviews/Screenshot 2026-09-03 004540.png" alt="Professional review 6" class="w-full aspect-[4/3] object-contain rounded-lg bg-slate-50 dark:bg-slate-900 transition-transform duration-500">
+                </a>
+                <a href="reviews/Screenshot 2026-09-03 004612.png" target="_blank" rel="noopener noreferrer" class="review-card group block rounded-xl border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard p-2 shadow-sm hover:border-accentCyan transition-colors" aria-label="Open review 7">
+                    <img src="reviews/Screenshot 2026-09-03 004612.png" alt="Professional review 7" class="w-full aspect-[4/3] object-contain rounded-lg bg-slate-50 dark:bg-slate-900 transition-transform duration-500">
+                </a>
+                <a href="reviews/Screenshot 2026-09-03 004638.png" target="_blank" rel="noopener noreferrer" class="review-card group block rounded-xl border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard p-2 shadow-sm hover:border-accentCyan transition-colors" aria-label="Open review 8">
+                    <img src="reviews/Screenshot 2026-09-03 004638.png" alt="Professional review 8" class="w-full aspect-[4/3] object-contain rounded-lg bg-slate-50 dark:bg-slate-900 transition-transform duration-500">
+                </a>
+                <a href="https://drive.google.com/file/d/11GiBBXqfLJWSFd7wNxBxdO1OcnxvpiL-/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="review-card group block rounded-xl border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard p-2 shadow-sm hover:border-accentCyan transition-colors" aria-label="Open review video on Google Drive">
+                    <div class="w-full aspect-[4/3] flex flex-col items-center justify-center gap-3 rounded-lg bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 transition-transform duration-500 group-hover:scale-[1.02]">
+                        <i data-lucide="play-circle" class="w-14 h-14 text-accentCyan dark:text-accentDarkCyan"></i>
+                        <span class="font-semibold">Watch review video</span>
+                        <span class="text-sm text-slate-500 dark:text-slate-400">Open on Google Drive</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Contact Section ==================== -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-lightCard/50 dark:bg-darkCard/30 border-t border-lightBorder dark:border-darkBorder">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">Get In Touch</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-xl mx-auto">Have a project, service request, or entry-level opportunity? Feel free to reach out directly.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Direct Contact Details -->
+                <div class="space-y-6" data-aos="fade-right">
+                    <div class="flex items-start gap-4 p-4 bg-lightCard dark:bg-darkCard rounded-xl border border-lightBorder dark:border-darkBorder shadow-sm">
+                        <div class="p-3 bg-accentCyan/10 text-accentCyan dark:text-accentDarkCyan rounded-lg">
+                            <i data-lucide="mail" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-400">Email Address</h4>
+                            <a href="mailto:moazelshamy55@gmail.com" class="text-slate-900 dark:text-white font-medium hover:text-accentCyan dark:hover:text-accentDarkCyan transition-colors">moazelshamy55@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 bg-lightCard dark:bg-darkCard rounded-xl border border-lightBorder dark:border-darkBorder shadow-sm">
+                        <div class="p-3 bg-accentCyan/10 text-accentCyan dark:text-accentDarkCyan rounded-lg">
+                            <i data-lucide="phone" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-400">Phone Number</h4>
+                            <p class="text-slate-900 dark:text-white font-medium">+20 1019857997</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 bg-lightCard dark:bg-darkCard rounded-xl border border-lightBorder dark:border-darkBorder shadow-sm">
+                        <div class="p-3 bg-accentCyan/10 text-accentCyan dark:text-accentDarkCyan rounded-lg">
+                            <i data-lucide="map-pin" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-400">Location</h4>
+                            <p class="text-slate-900 dark:text-white font-medium">Tanta, Egypt</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Contact Form -->
+                <div class="bg-lightCard dark:bg-darkCard p-6 rounded-xl border border-lightBorder dark:border-darkBorder shadow-sm" data-aos="fade-left">
+                    <form id="contact-form" action="https://formsubmit.co/moazelshamy55@gmail.com" method="POST" class="space-y-4">
+                        <input type="hidden" name="_subject" value="New Portfolio Contact Message">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Your Name</label>
+                            <input type="text" id="name" name="name" required class="w-full bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder rounded-lg px-4 py-2.5 text-slate-900 dark:text-slate-200 text-sm focus:outline-none focus:border-accentCyan transition-colors" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
+                            <input type="email" id="email" name="email" required class="w-full bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder rounded-lg px-4 py-2.5 text-slate-900 dark:text-slate-200 text-sm focus:outline-none focus:border-accentCyan transition-colors" placeholder="name@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Message or Requested Service</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder rounded-lg px-4 py-2.5 text-slate-900 dark:text-slate-200 text-sm focus:outline-none focus:border-accentCyan transition-colors" placeholder="Write your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-accentCyan dark:bg-accentDarkCyan hover:opacity-90 text-white dark:text-darkBg font-semibold py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-lightBorder dark:border-darkBorder text-center text-slate-500 text-xs">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© 2026 Moaz Elshamy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript & Interactive Behaviors -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Initialize AOS Animations
+        AOS.init({
+            duration: 700,
+            once: true,
+        });
+
+        // Dark / Light Theme Toggle Logic
+        const themeToggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+        const htmlElement = document.documentElement;
+
+        if (localStorage.getItem('theme') === 'dark') {
+            htmlElement.classList.add('dark');
+        } else if (localStorage.getItem('theme') === 'light') {
+            htmlElement.classList.remove('dark');
+        }
+
+        themeToggleBtns.forEach(btn => {
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    if (htmlElement.classList.contains('dark')) {
+                        htmlElement.classList.remove('dark');
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        htmlElement.classList.add('dark');
+                        localStorage.setItem('theme', 'dark');
+                    }
+                });
+            }
+        });
+
+        // Mobile Menu Drawer Controls
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        const sectionLinks = document.querySelectorAll('nav a[href^="#"]');
+        const trackedSections = document.querySelectorAll('section[id]');
+
+        const sectionObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    sectionLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+                    });
+                }
+            });
+        }, { rootMargin: '-35% 0px -55% 0px' });
+
+        trackedSections.forEach(section => sectionObserver.observe(section));
+
+        // Interactive Project Filtering Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-accentCyan', 'dark:bg-accentDarkCyan', 'text-white', 'dark:text-darkBg');
+                    b.classList.add('bg-lightCard', 'dark:bg-darkCard', 'text-slate-700', 'dark:text-slate-300');
+                });
+                
+                btn.classList.add('active', 'bg-accentCyan', 'dark:bg-accentDarkCyan', 'text-white', 'dark:text-darkBg');
+                btn.classList.remove('bg-lightCard', 'dark:bg-darkCard', 'text-slate-700', 'dark:text-slate-300');
+
+                const filter = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Architecture Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+    </script>
+</body>
+</html>
