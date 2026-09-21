@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moaz Elshamy | Junior Microsoft Data Engineer & Software Developer</title>
+    <meta name="description" content="Moaz Elshamy is a junior Microsoft data engineer and software developer building practical data, automation, and IoT solutions.">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -378,9 +379,180 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #F4B942;
         }
+
+        /* Portfolio redesign: a focused data-lab visual system */
+        :root {
+            --ink: #e7edf5;
+            --muted-ink: #9aacc1;
+            --teal: #26d9c0;
+            --gold: #ff8066;
+            --paper: #07111f;
+            --paper-bright: #0e1b2d;
+            --line: #20344d;
+            --soft-line: rgba(38, 217, 192, 0.18);
+        }
+
+        html:not(.dark) {
+            --ink: #102238;
+            --muted-ink: #53677d;
+            --teal: #087f78;
+            --gold: #e85d45;
+            --paper: #eef5f7;
+            --paper-bright: #ffffff;
+            --line: #cbdce3;
+            --soft-line: rgba(8, 127, 120, 0.18);
+        }
+
+        body {
+            background-color: var(--paper) !important;
+            background-image: linear-gradient(rgba(38, 217, 192, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(38, 217, 192, 0.035) 1px, transparent 1px) !important;
+            background-size: 48px 48px;
+            color: var(--ink);
+        }
+
+        html:not(.dark) body {
+            background-image: linear-gradient(rgba(8, 127, 120, 0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(8, 127, 120, 0.045) 1px, transparent 1px) !important;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(circle at 8% 8%, rgba(38, 217, 192, 0.13), transparent 26rem), radial-gradient(circle at 92% 42%, rgba(255, 128, 102, 0.1), transparent 24rem);
+        }
+
+        .scroll-progress {
+            position: fixed;
+            inset: 0 auto auto 0;
+            height: 3px;
+            width: 0;
+            z-index: 100;
+            background: linear-gradient(90deg, var(--teal), var(--gold));
+            box-shadow: 0 0 16px rgba(38, 217, 192, 0.7);
+        }
+
+        nav {
+            background: color-mix(in srgb, var(--paper) 84%, transparent) !important;
+            border-color: var(--line) !important;
+            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.16) !important;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            opacity: 0.5;
+            background-image: linear-gradient(rgba(38, 217, 192, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(38, 217, 192, 0.08) 1px, transparent 1px);
+            background-size: 34px 34px;
+            mask-image: linear-gradient(to bottom, black, transparent 82%);
+            pointer-events: none;
+        }
+
+        #about {
+            min-height: min(820px, 92vh);
+            background: linear-gradient(120deg, rgba(7, 17, 31, 0.98), rgba(14, 27, 45, 0.82)) !important;
+        }
+
+        html:not(.dark) #about {
+            background: linear-gradient(120deg, rgba(238, 245, 247, 0.98), rgba(255, 255, 255, 0.9)) !important;
+        }
+
+        #about > div:not(.hero-grid) {
+            animation: hero-enter 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        @keyframes hero-enter {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-photo {
+            border-radius: 1rem !important;
+            border-color: var(--teal) !important;
+            box-shadow: 16px 16px 0 rgba(38, 217, 192, 0.12), 0 24px 60px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .hero-photo img { object-position: center 28%; }
+
+        section { scroll-margin-top: 5rem; }
+
+        #services, #additional-services, #projects, #skills, #experience, #reviews, #contact {
+            background: transparent !important;
+            border-color: var(--line) !important;
+        }
+
+        #services .grid > div, #additional-services .grid > div, #skills .grid > div, #contact .grid > div, #projects .project-card, #reviews .review-card {
+            background: color-mix(in srgb, var(--paper-bright) 90%, transparent) !important;
+            border-color: var(--line) !important;
+            border-radius: 0.9rem !important;
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.14) !important;
+        }
+
+        #services .grid > div:hover, #additional-services .grid > div:hover, #skills .grid > div:hover, #contact .grid > div:hover, #projects .project-card:hover {
+            border-color: var(--soft-line) !important;
+            transform: translateY(-8px) !important;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.24) !important;
+        }
+
+        #projects .project-card > a:first-child {
+            padding: 0.75rem !important;
+            background: rgba(38, 217, 192, 0.04) !important;
+        }
+
+        #projects .project-card > a:first-child img {
+            height: 13rem !important;
+            object-fit: cover !important;
+            border-radius: 0.65rem !important;
+            border-color: var(--line) !important;
+        }
+
+        #experience img { max-height: 13rem; object-fit: contain; }
+
+        #reviews img { object-fit: contain !important; }
+
+        .filter-btn {
+            border-radius: 999px !important;
+            min-height: 2.5rem;
+        }
+
+        .filter-btn.active {
+            background: var(--teal) !important;
+            color: #06151b !important;
+            border-color: var(--teal) !important;
+            box-shadow: 0 0 20px rgba(38, 217, 192, 0.2);
+        }
+
+        #mobile-menu {
+            background: var(--paper-bright) !important;
+            border-color: var(--line) !important;
+        }
+
+        input, textarea {
+            background: color-mix(in srgb, var(--paper) 82%, transparent) !important;
+            border-color: var(--line) !important;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--teal) !important;
+            box-shadow: 0 0 0 3px rgba(38, 217, 192, 0.12);
+        }
+
+        .modal-panel {
+            max-height: min(90vh, 40rem);
+            overflow-y: auto;
+        }
+
+        @media (max-width: 767px) {
+            #about { min-height: auto; }
+            .hero-photo { box-shadow: 8px 8px 0 rgba(38, 217, 192, 0.12), 0 18px 40px rgba(0, 0, 0, 0.26) !important; }
+            #projects .project-card > a:first-child img { height: 12rem !important; }
+        }
     </style>
 </head>
 <body class="bg-lightBg dark:bg-darkBg text-slate-800 dark:text-slate-200 font-sans antialiased selection:bg-accentDarkCyan selection:text-darkBg transition-colors duration-300">
+
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
     <!-- ==================== Header & Navigation Bar ==================== -->
     <nav class="sticky top-0 z-40 w-full bg-lightBg/80 dark:bg-darkBg/80 backdrop-blur-md border-b border-lightBorder dark:border-darkBorder transition-all duration-300">
@@ -426,7 +598,7 @@
                         <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                         <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                     </button>
-                    <button id="mobile-menu-btn" class="p-2 rounded-md text-slate-600 dark:text-slate-400 hover:bg-lightCard dark:hover:bg-darkCard focus:outline-none">
+                    <button id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false" class="p-2 rounded-md text-slate-600 dark:text-slate-400 hover:bg-lightCard dark:hover:bg-darkCard focus:outline-none">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
@@ -452,15 +624,16 @@
 
     <!-- ==================== Hero Section ==================== -->
     <section id="about" class="min-h-[90vh] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="hero-grid" aria-hidden="true"></div>
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 z-10" data-aos="fade-up">
             
             <!-- User Profile Photo Block -->
             <div class="w-full md:w-1/2 flex justify-center">
                 <div class="relative group">
                     <div class="absolute -inset-1 bg-gradient-to-r from-accentCyan to-amber-500 rounded-2xl blur opacity-30 group-hover:opacity-70 transition duration-500"></div>
-                    <div class="relative w-64 h-80 sm:w-80 sm:h-96 rounded-2xl overflow-hidden border-2 border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard shadow-2xl">
+                    <div class="hero-photo relative w-64 h-80 sm:w-80 sm:h-96 rounded-2xl overflow-hidden border-2 border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard shadow-2xl">
                         <!-- Profile Image Link Placeholder -->
-                        <img src="photo_2026-09-01_01-24-10.jpg" alt="Moaz Elshamy" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                        <img src="photo_2026-06-08_06-16-47.jpg" alt="Moaz Elshamy" width="640" height="800" fetchpriority="high" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
                     </div>
                 </div>
             </div>
@@ -480,7 +653,7 @@
 
                 <!-- Summary Paragraph derived from Resume -->
                 <p class="about-copy text-slate-600 dark:text-slate-400 text-base sm:text-lg mb-8 leading-relaxed">
-                   Analytical Computer Science undergraduate at Tanta University (Expected 2029) specializing in Microsoft Azure Data Engineering via Digital Egypt Pioneers Initiative (DEPI). Skilled in building scalable ETL/ELT pipelines, designing PostgreSQL architectures.
+                   Analytical Computer Science undergraduate at Tanta University (Expected 2029) specializing in Microsoft Azure Data Engineering via Digital Egypt Pioneers Initiative (DEPI). Skilled in building scalable ETL/ELT pipelines, designing PostgreSQL architectures, and implementing IoT data ingestion workflows using Python and SQL.
                 </p>
 
                 <!-- Call To Action Buttons -->
@@ -531,6 +704,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Service 1 -->
                 <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder p-6 rounded-xl hover:border-accentCyan/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <img src="servieces/data%20cleaning.jpg" alt="Data Cleaning and Preprocessing service" loading="lazy" width="1408" height="768" class="service-cover w-full aspect-[16/9] object-contain rounded-lg mb-6 border border-lightBorder dark:border-darkBorder transition-transform duration-500 group-hover:scale-[1.02]">
                     <div class="w-12 h-12 bg-accentCyan/10 rounded-lg flex items-center justify-center text-accentCyan dark:text-accentDarkCyan mb-6 group-hover:bg-accentCyan group-hover:text-white dark:group-hover:text-darkBg transition-colors">
                         <i data-lucide="database" class="w-6 h-6"></i>
                     </div>
@@ -548,6 +722,7 @@
 
                 <!-- Service 2 -->
                 <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder p-6 rounded-xl hover:border-accentCyan/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                    <img src="servieces/Python%20Scripting%20%26%20Automation.jpg" alt="Python Scripting and Automation service" loading="lazy" width="1408" height="768" class="service-cover w-full aspect-[16/9] object-contain rounded-lg mb-6 border border-lightBorder dark:border-darkBorder transition-transform duration-500 group-hover:scale-[1.02]">
                     <div class="w-12 h-12 bg-accentCyan/10 rounded-lg flex items-center justify-center text-accentCyan dark:text-accentDarkCyan mb-6 group-hover:bg-accentCyan group-hover:text-white dark:group-hover:text-darkBg transition-colors">
                         <i data-lucide="code" class="w-6 h-6"></i>
                     </div>
@@ -565,6 +740,7 @@
 
                 <!-- Service 3 -->
                 <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder p-6 rounded-xl hover:border-accentCyan/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
+                    <img src="servieces/Basic%20Web%20Scraping.jpg" alt="Basic Web Scraping service" loading="lazy" width="1408" height="768" class="service-cover w-full aspect-[16/9] object-contain rounded-lg mb-6 border border-lightBorder dark:border-darkBorder transition-transform duration-500 group-hover:scale-[1.02]">
                     <div class="w-12 h-12 bg-accentCyan/10 rounded-lg flex items-center justify-center text-accentCyan dark:text-accentDarkCyan mb-6 group-hover:bg-accentCyan group-hover:text-white dark:group-hover:text-darkBg transition-colors">
                         <i data-lucide="table" class="w-6 h-6"></i>
                     </div>
@@ -582,6 +758,7 @@
 
                 <!-- Service 4 -->
                 <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder p-6 rounded-xl hover:border-accentCyan/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="400">
+                    <img src="servieces/SQL%20Database%20Querying%20%26%20Schema%20Design.jpg" alt="SQL Database Querying and Schema Design service" loading="lazy" width="1408" height="768" class="service-cover w-full aspect-[16/9] object-contain rounded-lg mb-6 border border-lightBorder dark:border-darkBorder transition-transform duration-500 group-hover:scale-[1.02]">
                     <div class="w-12 h-12 bg-accentCyan/10 rounded-lg flex items-center justify-center text-accentCyan dark:text-accentDarkCyan mb-6 group-hover:bg-accentCyan group-hover:text-white dark:group-hover:text-darkBg transition-colors">
                         <i data-lucide="server" class="w-6 h-6"></i>
                     </div>
@@ -599,6 +776,7 @@
 
                 <!-- Service 5 -->
                 <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder p-6 rounded-xl hover:border-accentCyan/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="500">
+                    <img src="servieces/C%2B%2B%20Bug%20Fixing%20%26%20Code%20Review.jpg" alt="C++ Bug Fixing and Code Review service" loading="lazy" width="1408" height="768" class="service-cover w-full aspect-[16/9] object-contain rounded-lg mb-6 border border-lightBorder dark:border-darkBorder transition-transform duration-500 group-hover:scale-[1.02]">
                     <div class="w-12 h-12 bg-accentCyan/10 rounded-lg flex items-center justify-center text-accentCyan dark:text-accentDarkCyan mb-6 group-hover:bg-accentCyan group-hover:text-white dark:group-hover:text-darkBg transition-colors">
                         <i data-lucide="bug" class="w-6 h-6"></i>
                     </div>
@@ -616,6 +794,7 @@
 
                 <!-- Service 6 -->
                 <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder p-6 rounded-xl hover:border-accentCyan/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="600">
+                    <img src="servieces/AI%20Prompt%20Engineering.jpg" alt="AI Prompt Engineering service" loading="lazy" width="1408" height="768" class="service-cover w-full aspect-[16/9] object-contain rounded-lg mb-6 border border-lightBorder dark:border-darkBorder transition-transform duration-500 group-hover:scale-[1.02]">
                     <div class="w-12 h-12 bg-accentCyan/10 rounded-lg flex items-center justify-center text-accentCyan dark:text-accentDarkCyan mb-6 group-hover:bg-accentCyan group-hover:text-white dark:group-hover:text-darkBg transition-colors">
                         <i data-lucide="cpu" class="w-6 h-6"></i>
                     </div>
@@ -645,6 +824,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Additional Service 1 -->
                 <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder p-6 rounded-xl hover:border-accentCyan/50 transition-all duration-300 group" data-aos="fade-up">
+                    <img src="servieces/Portfolio%20Website%20Design%20%26%20Development.jpg" alt="Portfolio Website Design and Development service" loading="lazy" width="1408" height="768" class="service-cover w-full aspect-[16/9] object-contain rounded-lg mb-6 border border-lightBorder dark:border-darkBorder transition-transform duration-500 group-hover:scale-[1.02]">
                     <div class="w-12 h-12 bg-accentCyan/10 rounded-lg flex items-center justify-center text-accentCyan dark:text-accentDarkCyan mb-6 group-hover:bg-accentCyan group-hover:text-white dark:group-hover:text-darkBg transition-colors">
                         <i data-lucide="layout-template" class="w-6 h-6"></i>
                     </div>
@@ -662,6 +842,7 @@
 
                 <!-- Additional Service 2 -->
                 <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder p-6 rounded-xl hover:border-accentCyan/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <img src="servieces/Content%20Writing%20%26%20Professional%20Copy.jpg" alt="Content Writing and Professional Copy service" loading="lazy" width="1408" height="768" class="service-cover w-full aspect-[16/9] object-contain rounded-lg mb-6 border border-lightBorder dark:border-darkBorder transition-transform duration-500 group-hover:scale-[1.02]">
                     <div class="w-12 h-12 bg-accentCyan/10 rounded-lg flex items-center justify-center text-accentCyan dark:text-accentDarkCyan mb-6 group-hover:bg-accentCyan group-hover:text-white dark:group-hover:text-darkBg transition-colors">
                         <i data-lucide="pen-tool" class="w-6 h-6"></i>
                     </div>
@@ -702,7 +883,7 @@
                 <!-- Project 1 -->
                 <div class="project-card bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder rounded-xl overflow-hidden hover:border-slate-400 dark:hover:border-slate-500 transition-all duration-300 flex flex-col shadow-sm" data-category="data" data-aos="fade-up">
                     <a href="1776257144724.jpg" target="_blank" rel="noopener noreferrer" class="block bg-slate-100 dark:bg-slate-900/60 p-3">
-                        <img src="1776257144724.jpg" alt="Liverpool FC performance analytics project" class="w-full h-52 object-cover rounded-lg border border-lightBorder dark:border-darkBorder hover:opacity-90 transition-opacity">
+                        <img src="1776257144724.jpg" alt="Liverpool FC performance analytics project" loading="lazy" width="1200" height="675" class="w-full h-52 object-cover rounded-lg border border-lightBorder dark:border-darkBorder hover:opacity-90 transition-opacity">
                     </a>
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex items-center justify-between mb-4">
@@ -727,7 +908,7 @@
                 <!-- Project 2 -->
                 <div class="project-card bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder rounded-xl overflow-hidden hover:border-slate-400 dark:hover:border-slate-500 transition-all duration-300 flex flex-col shadow-sm" data-category="iot" data-aos="fade-up" data-aos-delay="100">
                     <a href="1776214119095.jpg" target="_blank" rel="noopener noreferrer" class="block bg-slate-100 dark:bg-slate-900/60 p-3">
-                        <img src="1776214119095.jpg" alt="Smart Occupancy Monitoring and IoT Pipeline project" class="w-full h-52 object-cover rounded-lg border border-lightBorder dark:border-darkBorder hover:opacity-90 transition-opacity">
+                        <img src="1776214119095.jpg" alt="Smart Occupancy Monitoring and IoT Pipeline project" loading="lazy" width="1200" height="675" class="w-full h-52 object-cover rounded-lg border border-lightBorder dark:border-darkBorder hover:opacity-90 transition-opacity">
                     </a>
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex items-center justify-between mb-4">
@@ -752,7 +933,7 @@
                 <!-- Project 3 -->
                 <div class="project-card bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder rounded-xl overflow-hidden hover:border-slate-400 dark:hover:border-slate-500 transition-all duration-300 flex flex-col shadow-sm" data-category="sql" data-aos="fade-up" data-aos-delay="200">
                     <a href="Gemini_Generated_Image_gl67dogl67dogl67%20(1).jpg" target="_blank" rel="noopener noreferrer" class="block bg-slate-100 dark:bg-slate-900/60 p-3">
-                        <img src="Gemini_Generated_Image_gl67dogl67dogl67%20(1).jpg" alt="Relational Database Extraction Pipeline project" class="w-full h-52 object-cover rounded-lg border border-lightBorder dark:border-darkBorder hover:opacity-90 transition-opacity">
+                        <img src="Gemini_Generated_Image_gl67dogl67dogl67%20(1).jpg" alt="Relational Database Extraction Pipeline project" loading="lazy" width="1200" height="675" class="w-full h-52 object-cover rounded-lg border border-lightBorder dark:border-darkBorder hover:opacity-90 transition-opacity">
                     </a>
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex items-center justify-between mb-4">
@@ -777,7 +958,7 @@
                 <!-- Project 4 -->
                 <div class="project-card bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder rounded-xl overflow-hidden hover:border-slate-400 dark:hover:border-slate-500 transition-all duration-300 flex flex-col shadow-sm" data-category="data" data-aos="fade-up" data-aos-delay="300">
                     <a href="Gemini_Generated_Image_hknmx8hknmx8hknm.jpg" target="_blank" rel="noopener noreferrer" class="block bg-slate-100 dark:bg-slate-900/60 p-3">
-                        <img src="Gemini_Generated_Image_hknmx8hknmx8hknm.jpg" alt="Python Bank Account Management System project" class="w-full h-52 object-cover rounded-lg border border-lightBorder dark:border-darkBorder hover:opacity-90 transition-opacity">
+                        <img src="Gemini_Generated_Image_hknmx8hknmx8hknm.jpg" alt="Python Bank Account Management System project" loading="lazy" width="1200" height="675" class="w-full h-52 object-cover rounded-lg border border-lightBorder dark:border-darkBorder hover:opacity-90 transition-opacity">
                     </a>
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex items-center justify-between mb-4">
@@ -802,7 +983,7 @@
                 <!-- Project 5 -->
                 <div class="project-card bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder rounded-xl overflow-hidden hover:border-slate-400 dark:hover:border-slate-500 transition-all duration-300 flex flex-col shadow-sm" data-category="data" data-aos="fade-up" data-aos-delay="400">
                     <a href="Gemini_Generated_Image_8tsp208tsp208tsp.jpg" target="_blank" rel="noopener noreferrer" class="block bg-slate-100 dark:bg-slate-900/60 p-3">
-                        <img src="Gemini_Generated_Image_8tsp208tsp208tsp.jpg" alt="IMDb Top 250 movies data cleaning project" class="w-full h-52 object-cover rounded-lg border border-lightBorder dark:border-darkBorder hover:opacity-90 transition-opacity">
+                        <img src="Gemini_Generated_Image_8tsp208tsp208tsp.jpg" alt="IMDb Top 250 movies data cleaning project" loading="lazy" width="1200" height="675" class="w-full h-52 object-cover rounded-lg border border-lightBorder dark:border-darkBorder hover:opacity-90 transition-opacity">
                     </a>
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex items-center justify-between mb-4">
@@ -831,7 +1012,7 @@
 
     <!-- Modal Architecture Popups -->
     <div id="modal-1" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder max-w-2xl w-full rounded-xl p-6 relative">
+        <div class="modal-panel bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder max-w-2xl w-full rounded-xl p-6 relative">
             <button onclick="closeModal('modal-1')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
             <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Liverpool FC Performance Analytics Architecture</h3>
             <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed">
@@ -845,7 +1026,7 @@
     </div>
 
     <div id="modal-2" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder max-w-2xl w-full rounded-xl p-6 relative">
+        <div class="modal-panel bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder max-w-2xl w-full rounded-xl p-6 relative">
             <button onclick="closeModal('modal-2')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
             <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Smart Occupancy Monitoring Architecture</h3>
             <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed">
@@ -859,7 +1040,7 @@
     </div>
 
     <div id="modal-3" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder max-w-2xl w-full rounded-xl p-6 relative">
+        <div class="modal-panel bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder max-w-2xl w-full rounded-xl p-6 relative">
             <button onclick="closeModal('modal-3')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
             <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Relational Extraction Pipeline Architecture</h3>
             <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed">
@@ -959,7 +1140,7 @@
                     <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-2">B.Sc. in Computers and Information</h3>
                     <p class="text-slate-600 dark:text-slate-400 text-sm">Tanta University, Egypt | Undergraduate Student (Second Academic Year)</p>
                     <a href="كلية-الحاسبات-والمعلومات-جامعة-طنطا.jpg" target="_blank" rel="noopener noreferrer" class="block max-w-md mt-4 rounded-xl border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard p-2 shadow-sm hover:border-accentCyan transition-colors">
-                        <img src="كلية-الحاسبات-والمعلومات-جامعة-طنطا.jpg" alt="Faculty of Computers and Information at Tanta University" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition-opacity">
+                        <img src="كلية-الحاسبات-والمعلومات-جامعة-طنطا.jpg" alt="Faculty of Computers and Information at Tanta University" loading="lazy" width="1200" height="675" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition-opacity">
                     </a>
                     <p class="credential-description text-slate-500 dark:text-slate-400 text-xs mt-2 leading-relaxed">
                         Strong academic foundation in Data Structures, Algorithms, OOP, and PostgreSQL relational database architecture.
@@ -973,7 +1154,7 @@
                     <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-2">Microsoft Data Engineer Track</h3>
                     <p class="text-slate-600 dark:text-slate-400 text-sm">Digital Egypt Pioneers Initiative (DEPI)</p>
                     <a href="Gemini_Generated_Image_vinu9hvinu9hvinu.jpg" target="_blank" rel="noopener noreferrer" class="block max-w-md mt-4 rounded-xl border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard p-2 shadow-sm hover:border-accentCyan transition-colors">
-                        <img src="Gemini_Generated_Image_vinu9hvinu9hvinu.jpg" alt="Digital Egypt Pioneers Initiative DEPI" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition-opacity">
+                        <img src="Gemini_Generated_Image_vinu9hvinu9hvinu.jpg" alt="Digital Egypt Pioneers Initiative DEPI" loading="lazy" width="1200" height="675" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition-opacity">
                     </a>
                     <a href="https://www.linkedin.com/posts/moaz-elshamy-268552403_depi-microsoft-dataengineer-activity-7483951596066861056-c7M0?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAGchT_ABgDw3_-R-eajRGmhAaAXHhC-WFHM" target="_blank" rel="noopener noreferrer" aria-label="View DEPI post on LinkedIn" title="View DEPI post on LinkedIn" class="inline-flex items-center gap-1.5 mt-4 px-3 py-2 rounded-lg border border-accentCyan/30 dark:border-accentDarkCyan/50 bg-accentCyan/10 dark:bg-accentDarkCyan/10 text-xs font-semibold text-accentCyan dark:text-accentDarkCyan hover:bg-accentCyan hover:text-white dark:hover:bg-accentDarkCyan dark:hover:text-darkBg transition-colors"><span>View on LinkedIn</span><i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
                     <p class="credential-description text-slate-500 dark:text-slate-400 text-xs mt-2 leading-relaxed">
@@ -988,7 +1169,7 @@
                     <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-2">One Million Prompters Initiative Certification</h3>
                     <p class="text-slate-600 dark:text-slate-400 text-sm">Certified by Dubai Future Foundation</p>
                     <a href="1777299073935.jpg" target="_blank" rel="noopener noreferrer" class="block max-w-md mt-4 rounded-xl border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard p-2 shadow-sm hover:border-accentCyan transition-colors">
-                        <img src="1777299073935.jpg" alt="One Million Prompters Initiative certificate" class="w-full h-48 object-contain rounded-lg bg-slate-50 dark:bg-slate-900">
+                        <img src="1777299073935.jpg" alt="One Million Prompters Initiative certificate" loading="lazy" width="1200" height="675" class="w-full h-48 object-contain rounded-lg bg-slate-50 dark:bg-slate-900">
                     </a>
                     <a href="https://www.linkedin.com/posts/moaz-elshamy-268552403_ai-promptengineering-dubaifuturefoundation-activity-7454532621797253123-pLiM?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAGchT_ABgDw3_-R-eajRGmhAaAXHhC-WFHM" target="_blank" rel="noopener noreferrer" aria-label="View Prompt Engineering certificate post on LinkedIn" title="View Prompt Engineering certificate post on LinkedIn" class="inline-flex items-center gap-1.5 mt-4 px-3 py-2 rounded-lg border border-accentCyan/30 dark:border-accentDarkCyan/50 bg-accentCyan/10 dark:bg-accentDarkCyan/10 text-xs font-semibold text-accentCyan dark:text-accentDarkCyan hover:bg-accentCyan hover:text-white dark:hover:bg-accentDarkCyan dark:hover:text-darkBg transition-colors"><span>View on LinkedIn</span><i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
                     <p class="credential-description text-slate-500 dark:text-slate-400 text-xs mt-2">AI prompt engineering expertise and automated workflow optimization.</p>
@@ -1001,7 +1182,7 @@
                     <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-2">Excel Data Analysis Certification</h3>
                     <p class="text-slate-600 dark:text-slate-400 text-sm">AUC-Accredited UCCD Program</p>
                     <a href="1776180262679.jpg" target="_blank" rel="noopener noreferrer" class="block max-w-md mt-4 rounded-xl border border-lightBorder dark:border-darkBorder bg-lightCard dark:bg-darkCard p-2 shadow-sm hover:border-accentCyan transition-colors">
-                        <img src="1776180262679.jpg" alt="Excel Data Analysis UCCD certificate" class="w-full h-48 object-contain rounded-lg bg-slate-50 dark:bg-slate-900">
+                        <img src="1776180262679.jpg" alt="Excel Data Analysis UCCD certificate" loading="lazy" width="1200" height="675" class="w-full h-48 object-contain rounded-lg bg-slate-50 dark:bg-slate-900">
                     </a>
                     <a href="https://www.linkedin.com/posts/moaz-elshamy-268552403_im-happy-to-share-that-ive-successfully-activity-7449839986188689409-ikgP?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAGchT_ABgDw3_-R-eajRGmhAaAXHhC-WFHM" target="_blank" rel="noopener noreferrer" aria-label="View UCCD certificate post on LinkedIn" title="View UCCD certificate post on LinkedIn" class="inline-flex items-center gap-1.5 mt-4 px-3 py-2 rounded-lg border border-accentCyan/30 dark:border-accentDarkCyan/50 bg-accentCyan/10 dark:bg-accentDarkCyan/10 text-xs font-semibold text-accentCyan dark:text-accentDarkCyan hover:bg-accentCyan hover:text-white dark:hover:bg-accentDarkCyan dark:hover:text-darkBg transition-colors"><span>View on LinkedIn</span><i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
                     <p class="credential-description text-slate-500 dark:text-slate-400 text-xs mt-2">Accredited by the American University in Cairo for data cleaning and analytical modeling.</p>
@@ -1103,13 +1284,14 @@
                         <input type="hidden" name="_subject" value="New Portfolio Contact Message">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
+                        <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
                         <div>
                             <label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Your Name</label>
                             <input type="text" id="name" name="name" required class="w-full bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder rounded-lg px-4 py-2.5 text-slate-900 dark:text-slate-200 text-sm focus:outline-none focus:border-accentCyan transition-colors" placeholder="John Doe">
                         </div>
                         <div>
                             <label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
-                            <input type="email" id="email" name="email" required class="w-full bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder rounded-lg px-4 py-2.5 text-slate-900 dark:text-slate-200 text-sm focus:outline-none focus:border-accentCyan transition-colors" placeholder="name@example.com">
+                            <input type="email" id="email" name="_replyto" required autocomplete="email" class="w-full bg-lightBg dark:bg-darkBg border border-lightBorder dark:border-darkBorder rounded-lg px-4 py-2.5 text-slate-900 dark:text-slate-200 text-sm focus:outline-none focus:border-accentCyan transition-colors" placeholder="name@example.com">
                         </div>
                         <div>
                             <label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Message or Requested Service</label>
@@ -1173,12 +1355,26 @@
         const mobileMenu = document.getElementById('mobile-menu');
 
         menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            const isOpen = mobileMenu.classList.toggle('hidden') === false;
+            menuBtn.setAttribute('aria-expanded', String(isOpen));
         });
 
         mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            });
         });
+
+        // Keep a lightweight reading-progress indicator synced to the page.
+        const progressBar = document.getElementById('scroll-progress');
+        const updateScrollProgress = () => {
+            const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
+            progressBar.style.width = `${progress}%`;
+        };
+        window.addEventListener('scroll', updateScrollProgress, { passive: true });
+        updateScrollProgress();
 
         const sectionLinks = document.querySelectorAll('nav a[href^="#"]');
         const trackedSections = document.querySelectorAll('section[id]');
@@ -1214,6 +1410,10 @@
                 projectCards.forEach(card => {
                     if (filter === 'all' || card.getAttribute('data-category') === filter) {
                         card.style.display = 'flex';
+                        card.animate([
+                            { opacity: 0, transform: 'translateY(10px)' },
+                            { opacity: 1, transform: 'translateY(0)' }
+                        ], { duration: 280, easing: 'ease-out' });
                     } else {
                         card.style.display = 'none';
                     }
@@ -1223,12 +1423,33 @@
 
         // Architecture Modal Functions
         function openModal(modalId) {
-            document.getElementById(modalId).classList.remove('hidden');
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('hidden');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            modal.querySelector('button')?.focus();
         }
 
         function closeModal(modalId) {
-            document.getElementById(modalId).classList.add('hidden');
+            const modal = document.getElementById(modalId);
+            modal.classList.add('hidden');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
         }
+
+        document.querySelectorAll('[id^="modal-"]').forEach(modal => {
+            modal.setAttribute('aria-hidden', 'true');
+            modal.addEventListener('click', event => {
+                if (event.target === modal) closeModal(modal.id);
+            });
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                const openModalElement = document.querySelector('[id^="modal-"]:not(.hidden)');
+                if (openModalElement) closeModal(openModalElement.id);
+            }
+        });
 
     </script>
 </body>
